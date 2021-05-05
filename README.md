@@ -51,5 +51,5 @@ you've just cloned!!
 > node index.js
 ```
 
-###Apikey
-[Kangdev](http://kangdev.herokuapp.com)
+Apikey
+--[Kangdev](http://kangdev.herokuapp.com)
