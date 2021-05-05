@@ -1,4 +1,4 @@
-# BotJepri
+#INI APA?
 JEPRI BARUS
 <h1 align="center">Ara Ara Sayonaraツ<img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="40px" alt="hi"><br>Welcome To My Home!</h1>
 
@@ -42,7 +42,7 @@ you've just cloned!!
 > pkg install nodejs
 > pkg install git
 > pkg install bash
-> git clone https://github.com/jepribarus/bot
+> git clone https://github.com/jepribarus/kangdev
 > cd bot
 > bash install.sh
 ```
@@ -52,8 +52,5 @@ you've just cloned!!
 > node index.js
 ```
 
-## Thanks to
-- [WA-Automate](https://github.com/open-wa/wa-automate-nodejs)
-- [YogaSakti](https://github.com/YogaSakti/imageToSticker)
-- [MhankBarBar](https://github.com/MhankBarBar/whatsapp-bot)
-- [dandyraka](https://github.com/dandyraka/NoBadWord)
+##Apikey
+- [Kangdev](http://kangdev.herokuapp.com)
