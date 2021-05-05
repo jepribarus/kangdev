@@ -1183,6 +1183,7 @@ jepribrs.on('message-new', async (mek) => {
   ⤷ ${prefix}covid19
   ⤷ ${prefix}mutual
   ⤷ ${prefix}next
+  ⤷ ${prefix}tts
   
   
   ❒ SEKOLAH MENU ❒
@@ -1475,6 +1476,9 @@ http://kangdev.herokuapp.com
 
 ❒Github❒
 https://github.com/jepribarus
+
+❒Join Grup Wa❒
+https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
  `
                    //Sosial Media~Kangdev
                     jepribrs.sendMessage(from, wew, image, { quoted: mek, caption: barus })
@@ -3863,6 +3867,41 @@ var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
 reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${secondss} Detik`)
                 break
+                case 'gtts':
+		        case 'tts':
+                 if (!isRegistered) return reply( ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				
+				if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (args.length < 1) return jepribrs.sendMessage(from, 'Diperlukan kode bahasa kak!!', text, {quoted: mek})
+					const gtts = require('./lib/gtts')(args[0])
+					if (args.length < 2) return jepribrs.sendMessage(from, 'Mana teks yang mau di jadiin suara? suara setan kah?', text, {quoted: mek})
+					dtt = body.slice(8)
+					ranm = getRandom('.mp3')
+					rano = getRandom('.ogg')
+					dtt.length > 500
+					? reply('Textnya kebanyakan syg')
+					: gtts.save(ranm, dtt, function() {
+						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
+							fs.unlinkSync(ranm)
+							buffer = fs.readFileSync(rano)
+							if (err) return reply(ind.stikga())
+							jepribrs.sendMessage(from, buffer, audio, {quoted: mek, ptt:true})
+							fs.unlinkSync(rano)
+						})
+					})
+					await limitAdd(sender)
+			    break
+			case 'cogans':
+					case 'cogan':
+					if (!isRegistered) return reply( ind.noregis())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cowokganteng`, {method: 'get'})
+					naru = JSON.parse(JSON.stringify(anu));
+					to =  naru[Math.floor(Math.random() * naru.length)];
+					nye = await getBuffer(to)
+					jepribrs.sendMessage(from, nye, image, { caption: 'halu terus kak', quoted: mek })
+					break
                 // ini batas
                 case 'namaninja':
 			        if (!isRegistered) return reply( ind.noregis())
@@ -3914,16 +3953,6 @@ reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${
                   
                   if (budy.includes(`open bo`)) {
                   reply(`astafirulloh dosa kak`)
-                  }
-                  
-                  if (budy.includes(`Bot`)) {
-                const bot = fs.readFileSync('./jepribarus/ara.mp3');
-                jepribrs.sendMessage(from, bot, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-                  }
-                  
-                  if (budy.includes(`bot`)) {
-                const bot = fs.readFileSync('./jepribarus/ara.mp3');
-                jepribrs.sendMessage(from, bot, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
                   
                   if (budy.includes(`toxic`)) {
