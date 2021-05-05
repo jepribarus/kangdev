@@ -16,22 +16,6 @@
   <img src="https://img.shields.io/badge/-SQLite3-black?style=flat-square&logo=sqlite" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/jepribarus"><img src="https://github-readme-stats.vercel.app/api?username=jepribarus&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&icon_color=fff&hide_border=true&show_icons=true" /></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/jepribarus"><img src="https://github-readme-stats.vercel.app/api/top-langs?username=mancabot&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&hide_border=true&show_icons=true&layout=compact" /></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=jepribarus&theme=onedark" /></a>
-</p>
-
-<p align="center">
-   <img src="https://github-readme-streak-stats.herokuapp.com/?user=jepribarus" />
-</p>
-
 ## Install the dependencies:
 Before running the below command, make sure you're in the project directory that
 you've just cloned!!
