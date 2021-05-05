@@ -23,7 +23,7 @@ exports.lvlnoon = () => {
 }
 
 exports.noregis = () => {
-	return`「 BELUM MANDI🙈」\n\n Kamu belum Terdaftar Di Database Bot Jepri \n Contoh Cara Daftar: \n ${prefix}daftar ${pushname}|19`
+	return`「 BELUM MANDI🙈」\n\n Kamu belum Terdaftar Di Database kangdev bot \n Contoh Cara Daftar: \n ${prefix}daftar ${pushname}|19`
 }
 
 exports.rediregis = () => {
@@ -43,11 +43,11 @@ exports.groupo = () => {
 }
 
 exports.ownerb = () => {
-	return`「OWNER ONLY」\n\n Kamu Siapa ? Saya Gak Kenal Kamu😕 \n Perintah Ini Hanya Bisa Di Gunakan Oleh Owner Bot Jepri (jepri barus)`
+	return`「OWNER ONLY」\n\n Kamu Siapa ? Saya Gak Kenal Kamu😕 \n Perintah Ini Hanya Bisa Di Gunakan Oleh Owner 「KANGDEV BOT」`
 }
 
 exports.ownerg = () => {
-	return`「OWNER ONLY」\n\n Kamu Siapa ? Saya Gak Kenal Kamu😕 \n Perintah Ini Hanya Bisa Di Gunakan Oleh Owner Bot Jepri (jepri barus)`
+	return`「OWNER ONLY」\n\n Kamu Siapa ? Saya Gak Kenal Kamu😕 \n Perintah Ini Hanya Bisa Di Gunakan Oleh Owner 「KANGDEV BOT」`
 }
 
 exports.admin = () => {
@@ -59,11 +59,11 @@ exports.badmin = () => {
 }
 
 exports.nsfwoff = () => {
-	return`「NSFW TIDAK AKTIF」\n\n Chat Owner Bot Untuk Meng-Aktifkan Fitur NSWF di grup Ini👇\n http://wa.me/12349805035`
+	return`「NSFW TIDAK AKTIF」\n\n ketik #nsfw 1 \n untuk mengaktifkan`
 }
 
 exports.bug = () => {
-	return`Masalah telah di laporkan ke owner [BOT JEPRI]`
+	return`Masalah telah di laporkan ke owner [kangdev bot]`
 }
 
 exports.wrongf = () => {
@@ -127,15 +127,15 @@ exports.levelup = (pushname, sender, getLevelingXp,  getLevel, getLevelingLevel,
 `}
  
 exports.limitend = (pushname) => {
-	return`Maaf  Kak ${pushname} limit kamu telah habis \n Chat Owner Bot untuk menambahkan limit kamu : \n http://wa.me/12349805035 \n\n Note : Limit Di reset setiap hari pukul 12:00`
+	return`Maaf  Kak ${pushname} limit kamu telah habis \n Chat Owner Bot untuk menambahkan limit kamu : \n http://wa.me/12347590003 \n\n Note : Limit Di reset setiap hari pukul 12:00`
 }
 
 exports.limitcount = (limitCounts) => {
 	return`
-「 LIMIT USER BOT JEPRI 」
+「 LIMIT USER KANGDEV BOT 」
 sisa limit anda : ${limitCounts}
 
-NOTE : limit akan di reset setiap hari pukul 12:00 atau \n chat owner untuk menambahkan limit anda👇 \n http://wa.me/12349805035
+NOTE : limit akan di reset setiap hari pukul 12:00 atau \n chat owner untuk menambahkan limit anda👇 \n http://wa.me/12347590003
 `}
 
 exports.satukos = () => {
