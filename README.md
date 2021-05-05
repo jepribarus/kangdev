@@ -52,4 +52,4 @@ you've just cloned!!
 ```
 
 Apikey
---[Kangdev](http://kangdev.herokuapp.com)
+ : [Kangdev](http://kangdev.herokuapp.com)
