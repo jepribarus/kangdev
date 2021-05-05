@@ -14,7 +14,7 @@ apt-get update
 
 pkg install git bash nodejs imagemagick ffmpeg wget mc -y
 
-git clone https://github.com/jepribarus/bot
+git clone https://github.com/jepribarus/kangdev
 
 cd bot
 
@@ -35,12 +35,11 @@ cd bot
 node index.js
 
 ⚠️NOTE : JIKA BELUM PAHAM CHAT SAYA :
-wa.me/12347590003
+wa.me/625767354326
 
-‼️BOT HANYA WORK DI ANDROID VERSI 8 KE ATAS
 
 ╭──━─── ❀۝❀ ───━──╮
-                   BOT JEPRI
+                  KANGDEV
 ╰──━─── ❀۝❀ ───━──╯`
 }
 
