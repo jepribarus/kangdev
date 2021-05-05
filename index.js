@@ -1221,8 +1221,6 @@ jepribrs.on('message-new', async (mek) => {
   ⤷ ${prefix}setlimit
   ⤷ ${prefix}gantiapikey
   ⤷ ${prefix}kick
-  ⤷ ${prefix}bc
-  ⤷ ${prefix}bcgc [rawan ban]
   ⤷ ${prefix}clearall
   ⤷ ${prefix}setprefix
   ⤷ ${prefix}setppbot
@@ -1477,9 +1475,6 @@ http://kangdev.herokuapp.com
 
 ❒Github❒
 https://github.com/jepribarus
-  
- ❒ Join Grup Wa ❒
- https://chat.whatsapp.com/JHdsYOzxpO7ACVBASyboev
  `
                    //Sosial Media~Kangdev
                     jepribrs.sendMessage(from, wew, image, { quoted: mek, caption: barus })
@@ -3441,44 +3436,6 @@ https://github.com/jepribarus
 					kangdev = args[0]
 					reply(`apikey berhasil di ubah menjadi : *${kangdev}*`)
 					break 
-					case 'bc':
-                jepribrs.updatePresence(from, Presence.composing)
-                if (!isJepri) return reply(ind.ownerb())
-                if (args.length < 1) return reply('.......')
-                anu = await jepribrs.chats.all()
-                if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-                    const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-                    buff = await jepribrs.downloadMediaMessage(encmedia)
-                    for (let _ of anu) {
-                        jepribrs.sendMessage(_.jid, buff, image, { caption: `❮ KANGDEV B0T BROADCAST❯\n\n${body.slice(4)}` })
-                    }
-                    reply('')
-                } else {
-                    for (let _ of anu) {
-                        sendMess(_.jid, `❮ KANGDEV B0T BROADCAST ❯\n\n${body.slice(4)}`)
-                    }
-                    reply('*SUKSES BOSKU*')
-                }
-                break
-                case 'bcgc':
-                if (!isJepri) return reply(ind.ownerb())
-                if (args.length < 1) return reply('Teksnya mana bosku >_<')
-                anu = await groupMembers
-                nom = mek.participant
-                if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-                    const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-                    buff = await jepribrs.downloadMediaMessage(encmedia)
-                    for (let _ of anu) {
-                        jepribrs.sendMessage(_.jid, buff, image, { caption: `❮BC GROUP❯\n\n Dari Grup : ${groupName}\n Pengirim : wa.me/${(sender.split('@')[0])}\n Pesan : ${body.slice(6)}` })
-                    }
-                    reply('*SUKSES BOSKU*')
-                } else {
-                    for (let _ of anu) {
-                        sendMess(_.jid, `❮BC GROUP❯\n\n Dari Grup : ${groupName}\n Pengirim : wa.me/${(sender.split('@')[0])}\n Pesan : ${body.slice(6)}`)
-                    }
-                    reply('*SUKSES BOSKU*')
-                }
-                break
 					case 'clearall':
 					if (!isJepri) return reply(ind.ownerb())
 					anu = await jepribrs.chats.all()
