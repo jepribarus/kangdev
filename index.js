@@ -81,7 +81,7 @@ NamaOwner = 'Jepri Barus'
 NamaBot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='pangkal' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='apikey_lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 
 //owner number
 const jepriNumber = ["12347590003@s.whatsapp.net"] //Ganti Nomer Mu
@@ -531,7 +531,7 @@ jepribrs.on('message-new', async (mek) => {
 			const isPremium= prem.includes(sender)
 			const isAdmin = adm.includes(sender)
 			const isImage = type === 'imageMessage'
-			const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "*Kangdev Bot*", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('jepribarus/logo.jpg')} } }
+			const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "*Kangdev Bot*", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('jepribarus/jep.jpg')} } }
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -1481,7 +1481,7 @@ https://github.com/jepribarus
 https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
  `
                    //Sosial Media~Kangdev
-                    jepribrs.sendMessage(from, wew, image, { quoted: mek, caption: barus })
+                    jepribrs.sendMessage(from, wew, image, { quoted: freply, caption: barus })
 					break
 					case 'playmp3':
 				if (!isRegistered) return reply( ind.noregis())
