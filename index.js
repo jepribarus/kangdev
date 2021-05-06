@@ -81,7 +81,7 @@ NamaOwner = 'Jepri Barus'
 NamaBot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='apikey _lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='pangkal' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 
 //owner number
 const jepriNumber = ["12347590003@s.whatsapp.net"] //Ganti Nomer Mu
