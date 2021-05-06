@@ -81,7 +81,7 @@ NamaOwner = 'Jepri Barus'
 NamaBot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='apikey lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='apikey _lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 
 //owner number
 const jepriNumber = ["12347590003@s.whatsapp.net"] //Ganti Nomer Mu
@@ -1753,6 +1753,20 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 					capt = `[KANGDEV BOT] \n\n Kota : ${kota}\n tanggal : ${anu.tanggal}\n subuh : ${anu.subuh}\n zuhur : ${anu.zuhur}\n ashar : ${anu.ashar}\n magrib : ${anu.magrib}\n isya : ${anu.isya}`
 					jepribrs.sendMessage(from, capt, text, {quoted: mek})
 					break
+					case 'cintasegitiga':
+			        if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (args.length < 1) return reply(`Contoh ${prefix}cintasegitiga jepri|aisyah|putri`)
+					reply('[🚴] Sabar Beb Sedang Proses...')
+					ct = body.slice(14)
+				bg1 = ct.split("|")[0];
+                bg2 = ct.split("|")[1];
+                bg3  = ct.split("|")[2];
+					anu = await fetchJson(`https://kangdev.herokuapp.com/api/cinta/segitiga?nama1=${bg1}&nama2=${bg2}&nama3=${bg3}&apikey=${kangdev}`, {method: 'get'})
+					capt = `[KANGDEV BOT] \n\n ${anu.result}`
+					jepribrs.sendMessage(from, capt, text, {quoted: mek})
+					break
 					case 'kisahnabi':
 			        if (!isRegistered) return reply( ind.noregis())
                     if (isBanned) return reply('Maaf kamu sudah terbenned!')
@@ -2198,20 +2212,6 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 					kota = args.join(" ")
 					anu = await fetchJson(`https://kangdev.herokuapp.com/api/jam/dunia?kota=${kota}&apikey=${kangdev}`, {method: 'get'})
 					capt = `[KANGDEV BOT] \n\n Kota: ${kota}\n tanggal : ${anu.time.date}\n Time : ${anu.time.time}`
-					jepribrs.sendMessage(from, capt, text, {quoted: mek})
-					break
-					case 'cintasegitiga':
-			        if (!isRegistered) return reply( ind.noregis())
-                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply(`Contoh ${prefix}cintasegitiga amel|jepri|putri`)
-					reply('[🚴] Sabar Beb Sedang Proses...')
-					ct = body.slice(14)
-				jep1 = ct.split("|")[0];
-                jep2 = ct.split("|")[1];
-                jep3 = ct.split("|")[2];
-					anu = await fetchJson(`https://kangdev.herokuapp.com/api/cinta/segitiga?nama1=${jep1}&nama2=${jep2}&nama3=${jep3}&apikey=${kangdev}`, {method: 'get'})
-					capt = `[KANGDEV BOT] \n\n ${anu.result}`
 					jepribrs.sendMessage(from, capt, text, {quoted: mek})
 					break
 					case 'cekip':
