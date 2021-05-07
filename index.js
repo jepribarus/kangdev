@@ -80,7 +80,7 @@ namaowner = '𝐉𝐄𝐏𝐑𝐈 𝐁𝐀𝐑𝐔𝐒'
 namabot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='pangkal' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='apikey lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 
 //owner number
 const jepriNumber = ["12347590003@s.whatsapp.net"] //Ganti Nomer Mu
@@ -3396,6 +3396,7 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 					case 'stiker':
 					case 's':
 					case 'stc':
+					if (isBanned) return reply('Maaf kamu sudah terbenned!')
 					 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await jepribrs.downloadAndSaveMediaMessage(encmedia)
@@ -3502,6 +3503,7 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 					})
 					break
 					case 'stikertext':
+					if (isBanned) return reply('Maaf kamu sudah terbenned!')
 				if (args.length < 1) return reply(`_Teksnya Mana Sayang_\nContoh ${prefix}stikertext Jepri Barus`)
 				attp2 = await getBuffer(`https://kangdev.herokuapp.com/api/attp?text=${body.slice(11)}&apikey=${kangdev}`)
 				jepribrs.sendMessage(from, attp2, sticker, {quoted: mek})
