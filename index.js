@@ -55,7 +55,6 @@ const imageToBase64 = require('image-to-base64')
 const axios = require('axios')
 const { color, bgcolor } = require('./lib/color')
 const { bahasa } = require('./lib/bahasa')
-const { buatbot } = require('./jepribarus/buatbot')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fontPath = ('./lib/Zahraaa.ttf')
@@ -75,13 +74,13 @@ limitawal = 9999999999999 //ubah terserah mau berapa
 memberlimit = 0 //jangan di ubah biar gak elor
 cr = '*𝐁𝐎𝐓 𝐕𝐄𝐑𝐈𝐅𝐈𝐄𝐃*'
 
-fake = 'BOT ANTIDELETE'
+fake = '𝐁𝐎𝐓 𝐀𝐍𝐓𝐈𝐃𝐄𝐋𝐄𝐓𝐄'
 numbernye = '0'
-NamaOwner = 'Jepri Barus'
-NamaBot = 'KANGDEV BOT'
+namaowner = '𝐉𝐄𝐏𝐑𝐈 𝐁𝐀𝐑𝐔𝐒'
+namabot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='apikey_lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='pangkal' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 
 //owner number
 const jepriNumber = ["12347590003@s.whatsapp.net"] //Ganti Nomer Mu
@@ -104,6 +103,13 @@ const prem = JSON.parse(fs.readFileSync('./database/pengguna/premium.json'))
 const adm = JSON.parse(fs.readFileSync('./database/pengguna/admin.json'))
 const bad = JSON.parse(fs.readFileSync('./database/kelompok/bad.json'))
 const antitoxic = JSON.parse(fs.readFileSync('./src/antitoxic.json'))
+const event = JSON.parse(fs.readFileSync('./database/bot/event.json'))
+const antifirtex = JSON.parse(fs.readFileSync('./database/group/antifirtex.json'))
+const antifirtex2 = JSON.parse(fs.readFileSync('./database/group/antifirtex2.json'))
+const antifirtex3 = JSON.parse(fs.readFileSync('./database/group/antifirtex3.json'))
+const antifirtex4 = JSON.parse(fs.readFileSync('./database/group/antifirtex4.json'))
+const antifirtex5 = JSON.parse(fs.readFileSync('./database/group/antifirtex3.json'))
+const antifirtex6 = JSON.parse(fs.readFileSync('./database/group/antifirtex4.json'))
 //function
 const getLevelingXp = (sender) => {
             let position = false
@@ -516,6 +522,7 @@ jepribrs.on('message-new', async (mek) => {
             
             /************** SCURITY FEATURE ************/
             const isRegistered = checkRegisteredUser(sender)
+            const isEventon = isGroup ? event.includes(from) : false
             const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
             const isLevelingOn = isGroup ? _leveling.includes(from) : false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
@@ -525,13 +532,20 @@ jepribrs.on('message-new', async (mek) => {
 			const isAntilink = isGroup ? antilink.includes(from) : false
 			const isJepri = jepriNumber.includes(sender)
 			const isAntiToxic = isGroup ? antitoxic.includes(from) : false
-			
+			const isAntiFirtex= isGroup ? antifirtex.includes(from) : false
+            const isAntiFirtex2= isGroup ? antifirtex2.includes(from) : false
+            const isAntiFirtex3= isGroup ? antifirtex3.includes(from) : false
+            const isAntiFirtex4= isGroup ? antifirtex4.includes(from) : false
+            const isAntiFirtex5= isGroup ? antifirtex5.includes(from) : false
+            const isAntiFirtex6= isGroup ? antifirtex6.includes(from) : false
+			const ucapan = await axios.get('https://xinzbot-api.herokuapp.com/api/ucapan?apikey=XinzBot&timeZone=Asia/Jakarta')
+			const ultah = await axios.get('https://xinzbot-api.herokuapp.com/api/hitungmundur?apikey=XinzBot&tanggal=17&bulan=08')
 
 			const isBanned = ban.includes(sender)
 			const isPremium= prem.includes(sender)
 			const isAdmin = adm.includes(sender)
 			const isImage = type === 'imageMessage'
-			const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "*Kangdev Bot*", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('jepribarus/jep.jpg')} } }
+			const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "*𝐊𝐀𝐍𝐆𝐃𝐄𝐕 𝐁𝐎𝐓*", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('jepribarus/jep.jpg')} } }
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -1038,6 +1052,133 @@ jepribrs.on('message-new', async (mek) => {
 			reply("Ready Syng?")
 		}, 0)
 	}
+	
+	// ANTI FILTEK
+        if (messagesC.includes("๒๒")){
+		if (!isGroup) return
+		if (!isAntiFirtex) return
+		if (isGroupAdmins) return reply('Jngan Main Filtek Atuh Min, Dosa !!!')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Ajg Ada Bocil Filtek \n uluh uluh atut ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE CILツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("🧙‍♂️𝐀𝐥𝐚𝐤𝐚𝐳𝐚𝐦🔮")){
+		if (!isGroup) return
+		if (!isAntiFirtex2) return
+		if (isGroupAdmins) return reply('Jngan Main Filtek Atuh Min, Dosa !!!')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Ajg Ada Bocil Filtek \n uluh uluh atut ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE CILツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("𝐗-𝐕𝐢𝐫𝐮𝐬")){
+		if (!isGroup) return
+		if (!isAntiFirtex3) return
+		if (isGroupAdmins) return reply('Jngan Main Filtek Atuh Min, Dosa !!!')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Ajg Ada Bocil Filtek \n uluh uluh atut ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE CILツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("*⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃟ᡃ⃟ᡃ⃟ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃟ᡃ⃟ᡃ⃟ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃟ᡃ⃟ᡃ⃟ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ")){
+		if (!isGroup) return
+		if (!isAntiFirtex4) return
+		if (isGroupAdmins) return reply('Jngan Main Filtek Atuh Min, Dosa !!!')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Ajg Ada Bocil Filtek \n uluh uluh atut ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE CILツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("𝐂𝐎𝐋𝐎𝐒𝐒𝐀𝐋 𝐓𝐈𝐓𝐀𝐍")){
+		if (!isGroup) return
+		if (!isAntiFirtex5) return
+		if (isGroupAdmins) return reply('Jngan Main Filtek Atuh Min, Dosa !!!')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Ajg Ada Bocil Filtek \n uluh uluh atut ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE CILツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("♚㜸ཽཽࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ͢͢㜺ࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ㜸ཽཽཽ͢͢͢♚")){
+		if (!isGroup) return
+		if (!isAntiFirtex6) return
+		if (isGroupAdmins) return reply('Jngan Main Filtek Atuh Min, Dosa !!!')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Ajg Ada Bocil Filtek \n uluh uluh atut ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE CILツ")
+		}, 0)
+	}
 
              //kolor
 			colors = ['red','white','black','blue','yellow','green']
@@ -1122,13 +1263,6 @@ jepribrs.on('message-new', async (mek) => {
 					buffer = await getBuffer(me.imgUrl)
 					jepribrs.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
-		case 'carabuatbot':
-		            case 'buatbot':
-                    if (!isRegistered) return reply( ind.noregis())
-                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-		            jepribrs.sendMessage(from, buatbot(), text)
-		            break
 		case 'limit':
 				   if (!isRegistered) return reply( ind.noregis())
                     if (isBanned) return reply('Maaf kamu sudah terbenned!')
@@ -1140,338 +1274,411 @@ jepribrs.on('message-new', async (mek) => {
                     if (isBanned) return reply('Maaf kamu sudah terbenned!')
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                     wew = fs.readFileSync(`./jepribarus/logo.jpg`)
-                    barus = `🚴        🐎
-                    
-                    
-     〘 KANGDEV BOT〙
-╭─┅─┅─┅─┅─┅─┅─┅❁۪۪
-├❒OWNER : JEPRI BARUS
-├❒PREFIX : ${prefix}
-├❒DATE : ${time}
-├❒HALO : ${pushname}
-└┅─┅─┅─┅─┅─┅─┅─┅❁۪۪ 
+                    uptime = process.uptime()
+		            myMonths = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+                    myDays = ['Minggu','Senin','Selasa','Rabu','Kamis','Jum at','Sabtu'];
+              var tgl = new Date();
+                    detik = tgl.getSeconds();
+                    menit = tgl.getMinutes();
+                    jam = tgl.getHours();
+              var ampm = jam >= 12 ? 'PM' : 'AM';
+              var day = tgl.getDate()
+                   bulan = tgl.getMonth()
+              var thisDay = tgl.getDay(),
+                   thisDay = myDays[thisDay];
+              var yy = tgl.getYear()
+              var year = (yy < 1000) ? yy + 1900 : yy;
+              const tanggal = `${thisDay}, ${day} - ${myMonths[bulan]} - ${year}`
+                    barus = `Jam : ${jam}:${menit}:${detik} ${ampm}
+Tanggal : ${day} - ${myMonths[bulan]} - ${year}
+                                   
+Selamat ${ucapan.data.result}
+Kak ${pushname}ツ
+                
+╔══════════════❍              
+║〘 𝐈𝐍𝐅𝐎 𝐁𝐎𝐓〙
+╠══════════════❍
+║⤷❒NAMA BOT : ${namabot}
+║⤷❒OWNER : ${namaowner}
+║⤷❒PREFIX : ${prefix}
+║⤷❒USER BOT : ${_registered.length}
+╠══════════════❍
+║〘 𝐈𝐍𝐅𝐎 𝐊𝐀𝐌𝐔〙
+╠══════════════❍
+║❒NAMA : ${pushname}
+║❒LEVEL : ${getLevelingLevel(sender)}
+║❒ROLE : ${role}
+║❒XP : ${getLevelingXp(sender)}
+╚══════════════❍
 
-❒ ABOUTE BOT❒
- ⤷ ${prefix}info
- ⤷ ${prefix}carabuatbot
- ⤷ ${prefix}tes
- 
- ❒ OTHER MENU❒
- ⤷ ${prefix}stiker
- ⤷ ${prefix}stikerwa
- ⤷ ${prefix}stikertext
- ⤷ ${prefix}ttp
- ⤷ ${prefix}toimg
-  ⤷ ${prefix}pinterest
-  ⤷ ${prefix}googleimage
-  ⤷ ${prefix}artinama [jepri]
-  ⤷ ${prefix}artimimpi [kucing]
-  ⤷ ${prefix}chord [judul]
-  ⤷ ${prefix}lirik [judul]
-  ⤷ ${prefix}cerpen
-  ⤷ ${prefix}cersex
-  ⤷ ${prefix}namaninja
-  ⤷ ${prefix}gempa
-  ⤷ ${prefix}cuaca [kota]
-  ⤷ ${prefix}jamdunia [kota]
-  ⤷ ${prefix}jadwaltv
-  ⤷ ${prefix}cintasegitiga
-  ⤷ ${prefix}cekip [ip]
-  ⤷ ${prefix}font [text]
-  ⤷ ${prefix}font2 [text]
-  ⤷ ${prefix}hilih [text]
-  ⤷ ${prefix}covid19
-  ⤷ ${prefix}mutual
-  ⤷ ${prefix}next
-  ⤷ ${prefix}tts
-  
-  
-  ❒ SEKOLAH MENU ❒
-  ⤷ ${prefix}tugassekolah
-  ⤷ ${prefix}kalkulator
-  ⤷ ${prefix}wikipedia
-  ⤷ ${prefix}kbbi
-  
-  ❒ GROUP MENU ❒
-  ⤷ ${prefix}grup buka/tutup
-  ⤷ ${prefix}leveling [1/0]
-  ⤷ ${prefix}tutuptime [waktu]
-  ⤷ ${prefix}bukatime [waktu]
-  ⤷ ${prefix}level
-  ⤷ ${prefix}linkgc
-  ⤷ ${prefix}infogc
-  ⤷ ${prefix}add
-  ⤷ ${prefix}headshot
-  ⤷ ${prefix}listadmin
-  ⤷ ${prefix}simih [1/0]
-  ⤷ ${prefix}promote
-  ⤷ ${prefix}demote
-  ⤷ ${prefix}setdesc
-  ⤷ ${prefix}setname
-  ⤷ ${prefix}antilink [1/0]
-  ⤷ ${prefix}nsfw [1/0]
-  ⤷ ${prefix}welcome [1/0]
-  ⤷ ${prefix}leveling [1/0]
-  ⤷ ${prefix}antitoxic [1/0]
-  ⤷ ${prefix}antidelete
-  ⤷ ${prefix}hapustoxic
-  ⤷ ${prefix}addtoxic
-  ⤷ ${prefix}tagall
-  
-  ❒ OWNER MENU ❒
-  ⤷ ${prefix}setlimit
-  ⤷ ${prefix}gantiapikey
-  ⤷ ${prefix}kick
-  ⤷ ${prefix}clearall
-  ⤷ ${prefix}setprefix
-  ⤷ ${prefix}setppbot
-  ⤷ ${prefix}ban
-  ⤷ ${prefix}unban
- 
- ❒ DATABASE BOT ❒
-  ⤷ ${prefix}addvn
-  ⤷ ${prefix}getvn
-  ⤷ ${prefix}listvn
-  ⤷ ${prefix}addfoto
-  ⤷ ${prefix}getfoto
-  ⤷ ${prefix}listfoto
-  ⤷ ${prefix}addvideo
-  ⤷ ${prefix}getvideo
-  ⤷ ${prefix}listvideo
- 
- ❒ GABUT MENU ❒
-  ⤷ ${prefix}bisakah
-  ⤷ ${prefix}kapankah
-  ⤷ ${prefix}apakah
-  ⤷ ${prefix}sangecek
-  ⤷ ${prefix}gaycek
-  ⤷ ${prefix}gantengcek
-  ⤷ ${prefix}cantikcek
-  ⤷ ${prefix}watak
-  ⤷ ${prefix}hobby
-  ⤷ ${prefix}jadian
-  ⤷ ${prefix}jodohku
-  ⤷ ${prefix}tercantik
-  ⤷ ${prefix}terganteng
-  ⤷ ${prefix}jones
-  ⤷ ${prefix}bebankeluarga
- 
- ❒ SOSMED MENU❒
-  ⤷ ${prefix}ytmp4
-  ⤷ ${prefix}ytmp42
-  ⤷ ${prefix}ytmp3
-  ⤷ ${prefix}ytmp32
-  ⤷ ${prefix}playmp3
-  ⤷ ${prefix}playmp4
-  ⤷ ${prefix}igstalk[username]
-  ⤷ ${prefix}githubstalk [username]
-  ⤷ ${prefix}twiterstalk [username]
-  ⤷ ${prefix}igvideo
-  ⤷ ${prefix}fbvideo
-  ⤷ ${prefix}tiktokvideo
-  
-  ❒ ISLAMIC MENU❒
-  ⤷ ${prefix}jadwalsholat
-  ⤷ ${prefix}kisahnabi
-  ⤷ ${prefix}niatsholat
-  ⤷ ${prefix}tahlil
-  ⤷ ${prefix}wirid
-  ⤷ ${prefix}ayatkursi
-  ⤷ ${prefix}doaharian
-  ⤷ ${prefix}bacaansholat
-  ⤷ ${prefix}quran
-  ⤷ ${prefix}quran2
-  ⤷ ${prefix}hijaber [OOTD]
-  
-  ❒ ASUPAN MENU❒
-  ⤷ ${prefix}asupan
-  ⤷ ${prefix}asupan2
-  ⤷ ${prefix}asupanpelajar
-  ⤷ ${prefix}rikagusriani
-  ⤷ ${prefix}ukhty
-  ⤷ ${prefix}djimut
-  
-  ❒ RANDOM IMAGE❒
-  ⤷ ${prefix}harleyquin
-  ⤷ ${prefix}joker
-  ⤷ ${prefix}hijaber
-  ⤷ ${prefix}cecans
-  ⤷ ${prefix}cogans
-  ⤷ ${prefix}cr11
-  ⤷ ${prefix}bpink
-  ⤷ ${prefix}bts
-  ⤷ ${prefix}cewekracing
-  ⤷ ${prefix}anonymous
-  ⤷ ${prefix}pegunungan
-  ⤷ ${prefix}programing
-  ⤷ ${prefix}teknologi
-  ⤷ ${prefix}cyberspace
-  ⤷ ${prefix}muslim
-  
-  ❒ NSFW MENU❒
-  ⤷ ${prefix}ass
-  ⤷ ${prefix}ahegao
-  ⤷ ${prefix}bdsm
-  ⤷ ${prefix}blowjob
-  ⤷ ${prefix}cuckold
-  ⤷ ${prefix}cum
-  ⤷ ${prefix}ero
-  ⤷ ${prefix}femdom
-  ⤷ ${prefix}foot
-  ⤷ ${prefix}gangbang
-  ⤷ ${prefix}glasses
-  ⤷ ${prefix}hentai
-  ⤷ ${prefix}hentaigif
-  ⤷ ${prefix}jahy
-  ⤷ ${prefix}masturbation
-  ⤷ ${prefix}neko
-  ⤷ ${prefix}orgy
-  ⤷ ${prefix}panties
-  ⤷ ${prefix}pussy
-  ⤷ ${prefix}thighs
-  ⤷ ${prefix}yuri
-  
-  ❒ SFW STIKER❒
-  ⤷ ${prefix}smile
-  ⤷ ${prefix}bully
-  ⤷ ${prefix}cuddle
-  ⤷ ${prefix}cry
-  ⤷ ${prefix}lick
-  ⤷ ${prefix}hug
-  ⤷ ${prefix}pat
-  ⤷ ${prefix}smug
-  ⤷ ${prefix}bonk
-  ⤷ ${prefix}yeet
-  ⤷ ${prefix}dance
-  ⤷ ${prefix}slap
-  
-  ❒ WIBU MENU❒
-  ⤷ ${prefix}waifu
-  ⤷ ${prefix}nekonime
-  ⤷ ${prefix}shinobu
-  ⤷ ${prefix}megumin
-  ⤷ ${prefix}loli
-  ⤷ ${prefix}akira
-  ⤷ ${prefix}zerotwo
-  ⤷ ${prefix}naruto
-  ⤷ ${prefix}minato
-  ⤷ ${prefix}hinata
-  ⤷ ${prefix}sasuke
-  ⤷ ${prefix}chika
-  ⤷ ${prefix}kaneki
-  ⤷ ${prefix}touka
-  ⤷ ${prefix}rize
-  ⤷ ${prefix}onichan
-  ⤷ ${prefix}squidward
-  
-  ❒ QUOTES CAPTION❒
-  ⤷ ${prefix}bucin
-  ⤷ ${prefix}motivasi
-  ⤷ ${prefix}quotesanime
-  ⤷ ${prefix}quotesgambar
-  ⤷ ${prefix}katabijak
-  ⤷ ${prefix}katajoker
-  ⤷ ${prefix}captionislam
-  ⤷ ${prefix}pantun
-  ⤷ ${prefix}caption
-  ⤷ ${prefix}katahacker
-  ⤷ ${prefix}katahits
-  ⤷ ${prefix}katadoraemon
-  ⤷ ${prefix}katadilan
-  ⤷ ${prefix}katadoi
-  
-  ❒ PHOTO OXY❒
-  ⤷ ${prefix}glitch
-  ⤷ ${prefix}pubg
-  ⤷ ${prefix}battlefield
-  ⤷ ${prefix}google 
-  ⤷ ${prefix}cup
-  ⤷ ${prefix}cup2
-  ⤷ ${prefix}pot
-  ⤷ ${prefix}summer
-  ⤷ ${prefix}wooden
-  ⤷ ${prefix}rainbow
-  ⤷ ${prefix}between
-  ⤷ ${prefix}burn
-  ⤷ ${prefix}love
-  ⤷ ${prefix}wolf
-  ⤷ ${prefix}under
-  ⤷ ${prefix}water
-  ⤷ ${prefix}night
-  ⤷ ${prefix}fire
-  ⤷ ${prefix}harry
-  ⤷ ${prefix}horor
-  ⤷ ${prefix}langit
-  ⤷ ${prefix}smoke
-  ⤷ ${prefix}art
-  ⤷ ${prefix}neon
-  ⤷ ${prefix}glow
-  
-  ❒ PHOTO MAKER❒
-  ⤷ ${prefix}nulis
-  ⤷ ${prefix}nulis2
-  ⤷ ${prefix}nulis3
-  ⤷ ${prefix}nulis4
-  ⤷ ${prefix}tahta
-  ⤷ ${prefix}tahta2
-  ⤷ ${prefix}tahta3
-  ⤷ ${prefix}logonaruto
-  ⤷ ${prefix}berkode
-  ⤷ ${prefix}aesthetic
-  ⤷ ${prefix}bakarnama
-  
-  ❒ GAME MENU❒
-  ⤷ ${prefix}caklontong
-  ⤷ ${prefix}family100
-  ⤷ ${prefix}tebakgambar
-  ⤷ ${prefix}slot
-  ⤷ ${prefix}slot2
-  ⤷ ${prefix}dare
-  ⤷ ${prefix}truth
-  ⤷ ${prefix}truthaneh
-  
-  ❒ SERTIFIKAT MENU❒
-  ⤷ ${prefix}tolol
-  ⤷ ${prefix}epep
-  ⤷ ${prefix}epep2
-  ⤷ ${prefix}epep3
-  ⤷ ${prefix}ml
-  ⤷ ${prefix}ml2
-  ⤷ ${prefix}ml3
-  ⤷ ${prefix}pubg1
-  ⤷ ${prefix}pubg2
-  ⤷ ${prefix}pubg3
-  ⤷ ${prefix}anakharam
-  ⤷ ${prefix}babu
-  ⤷ ${prefix}pacar
-  ⤷ ${prefix}surga
-  ⤷ ${prefix}sadboy
-  ⤷ ${prefix}gay
-  
-  ❒ TEXT PRO ME❒
-  ⤷ ${prefix}blackpink
-  ⤷ ${prefix}blueneon
-  ⤷ ${prefix}glass
-  ⤷ ${prefix}party
-  ⤷ ${prefix}matrix
-  ⤷ ${prefix}dropwater
-  ⤷ ${prefix}pasir
-  ⤷ ${prefix}pasir2
-  ⤷ ${prefix}pasir3
-  ⤷ ${prefix}pasir4
-  ⤷ ${prefix}text3d
-  ⤷ ${prefix}matrix
-  ⤷ ${prefix}light
-  ⤷ ${prefix}cloud
-  ⤷ ${prefix}gradient
-  ⤷ ${prefix}1997
-  ⤷ ${prefix}minion
-  ⤷ ${prefix}helloween
-  ⤷ ${prefix}grafity
-  ⤷ ${prefix}goldplaybutton
-  ⤷ ${prefix}silverplaybuton
-  
-  ❒Apikey❒
+
+╔══════════════❍
+║╔▸ 𝐀𝐁𝐎𝐔𝐓 𝐁𝐎𝐓ツ
+║╠❒${prefix}info
+║╠❒${prefix}carabuatbot
+║╠❒${prefix}tes
+║╠❒${prefix}owner
+║╠❒${prefix}sewabot
+║╠❒${prefix}rules
+║╠❒${prefix}blocklist
+║╠❒${prefix}bugreport
+║╠❒${prefix}request
+║╚▸
+╠══════════════❍
+║╔▸ 𝐎𝐓𝐇𝐄𝐑 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}stiker
+║╠❒${prefix}stikerwa
+║╠❒${prefix}stikertext
+║╠❒${prefix}ttp
+║╠❒${prefix}toimg
+║╠❒${prefix}pinterest
+║╠❒${prefix}googleimage
+║╠❒${prefix}artinama [jepri]
+║╠❒${prefix}artimimpi [kucing]
+║╠❒${prefix}chord [judul]
+║╠❒${prefix}lirik [judul]
+║╠❒${prefix}cerpen
+║╠❒${prefix}cersex
+║╠❒${prefix}namaninja
+║╠❒${prefix}gempa
+║╠❒${prefix}cuaca [kota]
+║╠❒${prefix}jamdunia [kota]
+║╠❒${prefix}jadwaltv
+║╠❒${prefix}cintasegitiga
+║╠❒${prefix}cekip [ip]
+║╠❒${prefix}font [text]
+║╠❒${prefix}font2 [text]
+║╠❒${prefix}hilih [text]
+║╠❒${prefix}covid19
+║╠❒${prefix}mutual
+║╠❒${prefix}next
+║╠❒${prefix}tts
+║╚▸
+╠══════════════❍
+║╔▸𝐀𝐍𝐓𝐈 𝐕𝐈𝐑𝐔𝐒ツ
+║╠❒${prefix}antivirtex [1/0]
+║╠❒${prefix}antialakazam [1/0]
+║╠❒${prefix}antixvirus [1/0]
+║╠❒${prefix}antivirustebel [1/0]
+║╠❒${prefix}anticollosal [1/0]
+║╠❒${prefix}antiviruscina [1/0]
+║╚▸
+╠══════════════❍
+║╔▸𝐒𝐄𝐊𝐎𝐋𝐀𝐇 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}tugassekolah
+║╠❒${prefix}kalkulator
+║╠❒${prefix}wikipedia
+║╠❒${prefix}kbbi
+║╚▸
+╠══════════════❍
+║╔▸𝐒𝐎𝐔𝐍𝐃 𝐄𝐅𝐄𝐊ツ
+║╠❒${prefix}slow
+║╠❒${prefix}gemuk
+║╠❒${prefix}tupai
+║╠❒${prefix}bass
+║╚▸
+╠══════════════❍
+║╔▸𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}grup buka/tutup
+║╠❒${prefix}leveling [1/0]
+║╠❒${prefix}tutuptime [waktu]
+║╠❒${prefix}bukatime [waktu]
+║╠❒${prefix}event [1/0]
+║╠❒${prefix}mining
+║╠❒${prefix}delete
+║╠❒${prefix}level
+║╠❒${prefix}linkgc
+║╠❒${prefix}infogc
+║╠❒${prefix}add
+║╠❒${prefix}headshot
+║╠❒${prefix}listadmin
+║╠❒${prefix}simih [1/0]
+║╠❒${prefix}promote
+║╠❒${prefix}demote
+║╠❒${prefix}setdesc
+║╠❒${prefix}setname
+║╠❒${prefix}antilink [1/0]
+║╠❒${prefix}nsfw [1/0]
+║╠❒${prefix}welcome [1/0]
+║╠❒${prefix}leveling [1/0]
+║╠❒${prefix}antitoxic [1/0]
+║╠❒${prefix}antidelete
+║╠❒${prefix}hapustoxic
+║╠❒${prefix}addtoxic
+║╠❒${prefix}tagall
+║╚▸
+╠══════════════❍
+║╔▸𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}setlimit
+║╠❒${prefix}gantiapikey
+║╠❒${prefix}kick
+║╠❒${prefix}clearall
+║╠❒${prefix}setprefix
+║╠❒${prefix}setppbot
+║╠❒${prefix}ban
+║╠❒${prefix}unban
+║╚▸
+╠══════════════❍
+║╔▸𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 𝐁𝐎𝐓ツ
+║╠❒${prefix}addvn
+║╠❒${prefix}getvn
+║╠❒${prefix}listvn
+║╠❒${prefix}addfoto
+║╠❒${prefix}getfoto
+║╠❒${prefix}listfoto
+║╠❒${prefix}addvideo
+║╠❒${prefix}getvideo
+║╠❒${prefix}listvideo
+║╚▸
+╠══════════════❍
+║╔▸𝐆𝐀𝐁𝐔𝐓 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}bisakah
+║╠❒${prefix}kapankah
+║╠❒${prefix}apakah
+║╠❒${prefix}sangecek
+║╠❒${prefix}gaycek
+║╠❒${prefix}gantengcek
+║╠❒${prefix}cantikcek
+║╠❒${prefix}watak
+║╠❒${prefix}hobby
+║╠❒${prefix}jadian
+║╠❒${prefix}jodohku
+║╠❒${prefix}tercantik
+║╠❒${prefix}terganteng
+║╠❒${prefix}jones
+║╠❒${prefix}bebankeluarga
+║╚▸
+╠══════════════❍
+║╔▸❒ SOSMED MENU❒
+║╠❒${prefix}ytmp4
+║╠❒${prefix}ytmp42
+║╠❒${prefix}ytmp3
+║╠❒${prefix}ytmp32
+║╠❒${prefix}playmp3
+║╠❒${prefix}playmp4
+║╠❒${prefix}igstalk[username]
+║╠❒${prefix}githubstalk [username]
+║╠❒${prefix}twiterstalk [username]
+║╠❒${prefix}igvideo
+║╠❒${prefix}fbvideo
+║╠❒${prefix}tiktokvideo
+║╚▸
+╠══════════════❍
+║╔▸𝐈𝐒𝐋𝐀𝐌𝐈𝐂 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}jadwalsholat
+║╠❒${prefix}kisahnabi
+║╠❒${prefix}niatsholat
+║╠❒${prefix}tahlil
+║╠❒${prefix}wirid
+║╠❒${prefix}ayatkursi
+║╠❒${prefix}doaharian
+║╠❒${prefix}bacaansholat
+║╠❒${prefix}quran
+║╠❒${prefix}quran2
+║╠❒${prefix}hijaber [OOTD]
+║╚▸
+╠══════════════❍
+║╔▸𝐀𝐒𝐔𝐏𝐀𝐍 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}asupan
+║╠❒${prefix}asupan2
+║╠❒${prefix}asupanpelajar
+║╠❒${prefix}rikagusriani
+║╠❒${prefix}ukhty
+║╠❒${prefix}djimut
+║╚▸
+╠══════════════❍  
+║╔▸𝐑𝐀𝐍𝐃𝐎𝐌 𝐅𝐎𝐓𝐎ツ
+║╠❒${prefix}harleyquin
+║╠❒${prefix}joker
+║╠❒${prefix}hijaber
+║╠❒${prefix}cecans
+║╠❒${prefix}cogans
+║╠❒${prefix}cr11
+║╠❒${prefix}bpink
+║╠❒${prefix}bts
+║╠❒${prefix}cewekracing
+║╠❒${prefix}anonymous
+║╠❒${prefix}pegunungan
+║╠❒${prefix}programing
+║╠❒${prefix}teknologi
+║╠❒${prefix}cyberspace
+║╠❒${prefix}muslim
+║╚▸
+╠══════════════❍ 
+║╔▸𝐍𝐒𝐅𝐖 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}ass
+║╠❒${prefix}ahegao
+║╠❒${prefix}bdsm
+║╠❒${prefix}blowjob
+║╠❒${prefix}cuckold
+║╠❒${prefix}cum
+║╠❒${prefix}ero
+║╠❒${prefix}femdom
+║╠❒${prefix}foot
+║╠❒${prefix}gangbang
+║╠❒${prefix}glasses
+║╠❒${prefix}hentai
+║╠❒${prefix}hentaigif
+║╠❒${prefix}jahy
+║╠❒${prefix}masturbation
+║╠❒${prefix}neko
+║╠❒${prefix}orgy
+║╠❒${prefix}panties
+║╠❒${prefix}pussy
+║╠❒${prefix}thighs
+║╠❒${prefix}yuri
+║╚▸
+╠══════════════❍
+║╔▸𝐒𝐅𝐖 𝐒𝐓𝐈𝐊𝐄𝐑ツ
+║╠❒${prefix}smile
+║╠❒${prefix}bully
+║╠❒${prefix}cuddle
+║╠❒${prefix}cry
+║╠❒${prefix}lick
+║╠❒${prefix}hug
+║╠❒${prefix}pat
+║╠❒${prefix}smug
+║╠❒${prefix}bonk
+║╠❒${prefix}yeet
+║╠❒${prefix}dance
+║╠❒${prefix}slap
+║╚▸
+╠══════════════❍ 
+║╔▸𝐖𝐈𝐁𝐔 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}waifu
+║╠❒${prefix}nekonime
+║╠❒${prefix}shinobu
+║╠❒${prefix}megumin
+║╠❒${prefix}loli
+║╠❒${prefix}akira
+║╠❒${prefix}zerotwo
+║╠❒${prefix}naruto
+║╠❒${prefix}minato
+║╠❒${prefix}hinata
+║╠❒${prefix}sasuke
+║╠❒${prefix}chika
+║╠❒${prefix}kaneki
+║╠❒${prefix}touka
+║╠❒${prefix}rize
+║╠❒${prefix}onichan
+║╠❒${prefix}squidward
+║╚▸
+╠══════════════❍
+║╔▸𝐊𝐀𝐓𝐀 𝐊𝐀𝐓𝐀ツ
+║╠❒${prefix}bucin
+║╠❒${prefix}motivasi
+║╠❒${prefix}quotesanime
+║╠❒${prefix}quotesgambar
+║╠❒${prefix}katabijak
+║╠❒${prefix}katajoker
+║╠❒${prefix}captionislam
+║╠❒${prefix}pantun
+║╠❒${prefix}caption
+║╠❒${prefix}katahacker
+║╠❒${prefix}katahits
+║╠❒${prefix}katadoraemon
+║╠❒${prefix}katadilan
+║╠❒${prefix}katadoi
+║╚▸
+╠══════════════❍  
+║╔▸𝐏𝐇𝐎𝐓𝐎 𝐎𝐗𝐘ツ
+║╠❒${prefix}glitch
+║╠❒${prefix}pubg
+║╠❒${prefix}battlefield
+║╠❒${prefix}google 
+║╠❒${prefix}cup
+║╠❒${prefix}cup2
+║╠❒${prefix}pot
+║╠❒${prefix}summer
+║╠❒${prefix}wooden
+║╠❒${prefix}rainbow
+║╠❒${prefix}between
+║╠❒${prefix}burn
+║╠❒${prefix}love
+║╠❒${prefix}wolf
+║╠❒${prefix}under
+║╠❒${prefix}water
+║╠❒${prefix}night
+║╠❒${prefix}fire
+║╠❒${prefix}harry
+║╠❒${prefix}horor
+║╠❒${prefix}langit
+║╠❒${prefix}smoke
+║╠❒${prefix}art
+║╠❒${prefix}neon
+║╠❒${prefix}glow
+║╚▸
+╠══════════════❍
+║╔▸𝐏𝐇𝐎𝐓𝐎 𝐌𝐀𝐊𝐄𝐑ツ
+║╠❒${prefix}nulis
+║╠❒${prefix}nulis2
+║╠❒${prefix}nulis3
+║╠❒${prefix}nulis4
+║╠❒${prefix}tahta
+║╠❒${prefix}tahta2
+║╠❒${prefix}tahta3
+║╠❒${prefix}logonaruto
+║╠❒${prefix}berkode
+║╠❒${prefix}aesthetic
+║╠❒${prefix}bakarnama
+║╚▸ 
+╠══════════════❍
+║╔▸𝐆𝐀𝐌𝐄 𝐌𝐄𝐍𝐔ツ
+║╠❒${prefix}caklontong
+║╠❒${prefix}family100
+║╠❒${prefix}tebakgambar
+║╠❒${prefix}slot
+║╠❒${prefix}slot2
+║╠❒${prefix}dare
+║╠❒${prefix}truth
+║╠❒${prefix}truthaneh
+║╚▸
+╠══════════════❍  
+║╔▸𝐒𝐄𝐑𝐓𝐈𝐅𝐈𝐊𝐀𝐓ツ
+║╠❒${prefix}tolol
+║╠❒${prefix}epep
+║╠❒${prefix}epep2
+║╠❒${prefix}epep3
+║╠❒${prefix}ml
+║╠❒${prefix}ml2
+║╠❒${prefix}ml3
+║╠❒${prefix}pubg1
+║╠❒${prefix}pubg2
+║╠❒${prefix}pubg3
+║╠❒${prefix}anakharam
+║╠❒${prefix}babu
+║╠❒${prefix}pacar
+║╠❒${prefix}surga
+║╠❒${prefix}sadboy
+║╠❒${prefix}gay
+║╚▸
+╠══════════════❍║  
+║╔▸𝐓𝐄𝐗𝐓 𝐏𝐑𝐎 𝐌𝐄ツ
+║╠❒${prefix}blackpink
+║╠❒${prefix}blueneon
+║╠❒${prefix}glass
+║╠❒${prefix}party
+║╠❒${prefix}matrix
+║╠❒${prefix}dropwater
+║╠❒${prefix}pasir
+║╠❒${prefix}pasir2
+║╠❒${prefix}pasir3
+║╠❒${prefix}pasir4
+║╠❒${prefix}text3d
+║╠❒${prefix}matrix
+║╠❒${prefix}light
+║╠❒${prefix}cloud
+║╠❒${prefix}gradient
+║╠❒${prefix}1997
+║╠❒${prefix}minion
+║╠❒${prefix}helloween
+║╠❒${prefix}grafity
+║╠❒${prefix}goldplaybutton
+║╠❒${prefix}silverplaybuton
+║╚▸
+╚══════════════❍
+
+❒Apikey❒
 http://kangdev.herokuapp.com
 
 ❒Github❒
@@ -1480,7 +1687,116 @@ https://github.com/jepribarus
 ❒Join Grup Wa❒
 https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
  `
-                   //Sosial Media~Kangdev
+                    jepribrs.sendMessage(from, wew, image, { quoted: freply, caption: barus })
+					break
+					case 'carabuatbot':
+				case 'buatbot':
+                 if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                    wew = fs.readFileSync(`./jepribarus/apa.jpg`)
+                    barus = `CARA BUAT BOT
+                    
+
+❒Download Termux Di Playstore
+
+❒pkg update && pkg upgrade
+
+❒apt-get update
+
+❒pkg install git bash nodejs ffmpeg wget mc -y
+
+❒git clone https://github.com/jepribarus/kangdev
+
+❒cd kangdev
+
+❒bash install.sh
+
+❒node index.js
+
+-----------------------------------------------------
+  ❒Apikey❒
+http://kangdev.herokuapp.com
+
+❒Join Grup Wa❒
+https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
+ `
+                    jepribrs.sendMessage(from, wew, image, { quoted: freply, caption: barus })
+					break
+					case 'owner':
+				case 'infoowner':
+                 if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                    wew = fs.readFileSync(`./jepribarus/logo.jpg`)
+                    barus = `${ucapan.data.result}
+                    
+〘 KANGDEV BOT〙
+▬▭▬▭▬▭▬▭▬▭
+
+❒NAMA OWNER❒
+•JEPRI BARUS
+
+❒WHATSAPP❒:
+•wa.me/6285767354326
+
+❒ULTAH OWNER :
+•${ultah.data.result}
+
+❒GITHUB❒
+•https://github.com/jepribarus
+
+❒Join Grup Wa❒
+https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
+ `
+                    jepribrs.sendMessage(from, wew, image, { quoted: freply, caption: barus })
+					break
+				case 'sewabot':
+                 if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                    wew = fs.readFileSync(`./jepribarus/apa.jpg`)
+                    barus = `${pushname}
+                    
+▬▭▬▭▬▭▬▭▬▭▬▭
+❒OPEN JASA SEWA BOT❒
+▬▭▬▭▬▭▬▭▬▭▬▭
+❒Sewa Sebulan : 10k
+❒Sewa Permanen : 25k
+▬▭▬▭▬▭▬▭▬▭▬▭
+💸Payment :
+PULSA TELKOMSEL
+▬▭▬▭▬▭▬▭▬▭▬▭
+❗Minat?PC
+Wa.me/6285767354326
+▬▭▬▭▬▭▬▭▬▭▬▭
+
+❒Join Grup Wa❒
+https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
+ `
+                    jepribrs.sendMessage(from, wew, image, { quoted: freply, caption: barus })
+					break
+					case 'rules':
+                 if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                    wew = fs.readFileSync(`./jepribarus/apa.jpg`)
+                    barus = `${pushname}
+                    
+╔══════════════❍
+║╔▸𝐑𝐔𝐋𝐄𝐒 𝐁𝐎𝐓ツ
+║╠❒SPAM AUTO BLOCK
+║╠❒BERI JEDA 6 DETIK
+║╠❒ERROR HUBUNGI OWNER
+║╠❒KETIK ${prefix}owner
+║╠❒JANGAN VC/CALL BOT
+║╠❒MELANGGAR AUTO BLOCK
+║╚▸
+╚══════════════❍
+
+❒Join Grup Wa❒
+https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
+ `
                     jepribrs.sendMessage(from, wew, image, { quoted: freply, caption: barus })
 					break
 					case 'playmp3':
@@ -3914,6 +4230,262 @@ reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${
 					capt = `[KANGDEV BOT] \n\n Nama Lu : ${anu.result.your_name}\n Nama Ninja : ${anu.result.result}`
 					jepribrs.sendMessage(from, capt, text, {quoted: mek})
 					break
+					case 'mining':
+                      if (!isRegistered) return reply(ind.noregis())
+		              if (isBanned) return reply(ind.baned())
+                      if (isLimit(sender)) return reply(ind.limitend(pushname))
+                      if (!isEventon) return reply(`maaf ${pushname} event mining tidak di aktifkan oleh owner`)
+                      if (isJepri) {
+                      const one = 999999999
+                      addLevelingXp(sender, one)
+                      addLevelingLevel(sender, 99)
+                      reply(`Spesial For You♥ ${one}Xp `)
+                      }else{
+                      const mining = Math.ceil(Math.random() * 10000)
+                      addLevelingXp(sender, mining)
+                      await reply(`*selamat* ${pushname} kamu mendapatkan *${mining}Xp*`)
+                      }
+                    await limitAdd(sender)
+					break
+					case 'event':
+					if (!isGroup) return reply(ind.groupo())
+					if (!isGroupAdmins) return reply(ind.admin())
+					if (args.length < 1) return reply('Boo :𝘃')
+					if (Number(args[0]) === 1) {
+						if (isEventon) return reply('*SUDAH AKTIF* !!!')
+						event.push(from)
+						fs.writeFileSync('./database/bot/event.json', JSON.stringify(event))
+						reply('*❬ SUKSES ❭ MENGAKTIFKAN EVENT DI GRUB INI*')
+					} else if (Number(args[0]) === 0) {
+						event.splice(from, 1)
+						fs.writeFileSync('./database/bot/event.json', JSON.stringify(event))
+						reply('*❬ SUKSES ❭ MENONAKTIFKAN EVENT DI GRUB INI*')
+					} else {
+						reply(ind.satukos())
+					}
+					break
+					//ANTI VILTEk
+					case 'antivirtex':
+					if (!isGroup) return reply(ind.groupo())					
+					if (!isBotGroupAdmins) return reply('BOT HARUS JADI ADMIN DULU')					
+					if (args.length < 1) return reply('ketik 1 untuk mengaktifkan')
+					if (Number(args[0]) === 1) {
+						if (isAntiFirtex) return reply('UDAH NYALA KAK')
+						antifirtex.push(from)
+						fs.writeFileSync('./database/group/antifirtex.json', JSON.stringify(antifirtex))
+						reply('SUKSES MENGAKTIFKAN ANTI VIRTEX DI GROUP')
+						jepribrs.sendMessage(from,`PERHATIN !!! DILARANG KIRIM VIRUS!!KARNA GRUP INI BERSIFAT ANTI VIRUS!!JIKA KIRIM VIRUS MAKA AKAN DI KICK!!`, text)
+					} else if (Number(args[0]) === 0) {
+						if (!isAntiFirtex) return reply('EMANG AKTIF?')
+						var ini = anti.botLangsexOf(from)
+						antifirtex.splice(ini, 1)
+						fs.writeFileSync('./database/group/antifirtex.json', JSON.stringify(antifirtex))
+						reply('SUKSES MEMATIKAN ANTI VIRTEX DI GROUP')
+					} else {
+						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+					}
+					jepribrs.sendMessage(from, { quoted: mek})
+					break
+					case 'antialakazam':
+					if (!isGroup) return reply(ind.groupo())					
+					if (!isBotGroupAdmins) return reply('BOT HARUS JADI ADMIN DULU')					
+					if (args.length < 1) return reply('ketik 1 untuk mengaktifkan')
+					if (Number(args[0]) === 1) {
+						if (isAntiFirtex2) return reply('UDAH NYALA KAK')
+						antifirtex2.push(from)
+						fs.writeFileSync('./database/group/antifirtex2.json', JSON.stringify(antifirtex2))
+						reply('SUKSES MENGAKTIFKAN ANTI VIRTEX ALAKAZAM DI GROUP')
+						jepribrs.sendMessage(from,`PERHATIN !!! DILARANG KIRIM VIRUS!!KARNA GRUP INI BERSIFAT ANTI VIRUS!!JIKA KIRIM VIRUS MAKA AKAN DI KICK!!`, text)
+					} else if (Number(args[0]) === 0) {
+						if (!isAntiFirtex2) return reply('EMANG AKTIF?')
+						var ini = anti.botLangsexOf(from)
+						antifirtex2.splice(ini, 1)
+						fs.writeFileSync('./database/group/antifirtex2.json', JSON.stringify(antifirtex2))
+						reply('SUKSES MEMATIKAN ANTI VIRTEX ALAKAZAM DI GROUP')
+					} else {
+						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+					}
+					jepribrs.sendMessage(from, { quoted: mek})
+					break
+					case 'antixvirus':
+					if (!isGroup) return reply(ind.groupo())					
+					if (!isBotGroupAdmins) return reply('BOT HARUS JADI ADMIN DULU')					
+					if (args.length < 1) return reply('ketik 1 untuk mengaktifkan')
+					if (Number(args[0]) === 1) {
+						if (isAntiFirtex3) return reply('UDAH NYALA KAK')
+						antifirtex3.push(from)
+						fs.writeFileSync('./database/group/antifirtex3.json', JSON.stringify(antifirtex3))
+						reply('SUKSES MENGAKTIFKAN ANTI VIRTEX 𝐗-𝐕𝐢𝐫𝐮𝐬 DI GROUP')
+						jepribrs.sendMessage(from,`PERHATIN !!! DILARANG KIRIM VIRUS!!KARNA GRUP INI BERSIFAT ANTI VIRUS!!JIKA KIRIM VIRUS MAKA AKAN DI KICK!!`, text)
+					} else if (Number(args[0]) === 0) {
+						if (!isAntiFirtex3) return reply('EMANG AKTIF?')
+						var ini = anti.botLangsexOf(from)
+						antifirtex3.splice(ini, 1)
+						fs.writeFileSync('./database/group/antifirtex3.json', JSON.stringify(antifirtex3))
+						reply('SUKSES MEMATIKAN ANTI VIRTEX 𝐗-𝐕𝐢𝐫𝐮𝐬 DI GROUP')
+					} else {
+						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+					}
+					jepribrs.sendMessage(from, { quoted: mek})
+					break
+					case 'antivirustebel':
+					if (!isGroup) return reply(ind.groupo())					
+					if (!isBotGroupAdmins) return reply('BOT HARUS JADI ADMIN DULU')					
+					if (args.length < 1) return reply('ketik 1 untuk mengaktifkan')
+					if (Number(args[0]) === 1) {
+						if (isAntiFirtex4) return reply('UDAH NYALA KAK')
+						antifirtex4.push(from)
+						fs.writeFileSync('./database/group/antifirtex4.json', JSON.stringify(antifirtex4))
+						reply('SUKSES MENGAKTIFKAN ANTI VIRTEX *⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟*⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟*⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ DI GROUP')
+						jepribrs.sendMessage(from,`PERHATIN !!! DILARANG KIRIM VIRUS!!KARNA GRUP INI BERSIFAT ANTI VIRUS!!JIKA KIRIM VIRUS MAKA AKAN DI KICK!!`, text)
+					} else if (Number(args[0]) === 0) {
+						if (!isAntiFirtex4) return reply('EMANG AKTIF?')
+						var ini = anti.botLangsexOf(from)
+						antifirtex4.splice(ini, 1)
+						fs.writeFileSync('./database/group/antifirtex4.json', JSON.stringify(antifirtex4))
+						reply('SUKSES MEMATIKAN ANTI VIRTEX *⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟*⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟*⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ DI GROUP')
+					} else {
+						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+					}
+					jepribrs.sendMessage(from, { quoted: mek})
+					break
+					case 'anticollosal':
+					if (!isGroup) return reply(ind.groupo())					
+					if (!isBotGroupAdmins) return reply('BOT HARUS JADI ADMIN DULU')					
+					if (args.length < 1) return reply('ketik 1 untuk mengaktifkan')
+					if (Number(args[0]) === 1) {
+						if (isAntiFirtex5) return reply('UDAH NYALA KAK')
+						antifirtex5.push(from)
+						fs.writeFileSync('./database/group/antifirtex5.json', JSON.stringify(antifirtex5))
+						reply('SUKSES MENGAKTIFKAN ANTI VIRTEX 𝐂𝐎𝐋𝐎𝐒𝐒𝐀𝐋 𝐓𝐈𝐓𝐀𝐍 DI GROUP')
+						jepribrs.sendMessage(from,`PERHATIN !!! DILARANG KIRIM VIRUS!!KARNA GRUP INI BERSIFAT ANTI VIRUS!!JIKA KIRIM VIRUS MAKA AKAN DI KICK!!`, text)
+					} else if (Number(args[0]) === 0) {
+						if (!isAntiFirtex5) return reply('EMANG AKTIF?')
+						var ini = anti.botLangsexOf(from)
+						antifirtex5.splice(ini, 1)
+						fs.writeFileSync('./database/group/antifirtex5.json', JSON.stringify(antifirtex5))
+						reply('SUKSES MEMATIKAN ANTI VIRTEX 𝐂𝐎𝐋𝐎𝐒𝐒𝐀𝐋 𝐓𝐈𝐓𝐀𝐍 DI GROUP')
+					} else {
+						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+					}
+					jepribrs.sendMessage(from, { quoted: mek})
+					break
+					case 'antiviruscina':
+					if (!isGroup) return reply(ind.groupo())					
+					if (!isBotGroupAdmins) return reply('BOT HARUS JADI ADMIN DULU')					
+					if (args.length < 1) return reply('ketik 1 untuk mengaktifkan')
+					if (Number(args[0]) === 1) {
+						if (isAntiFirtex6) return reply('UDAH NYALA KAK')
+						antifirtex6.push(from)
+						fs.writeFileSync('./database/group/antifirtex6.json', JSON.stringify(antifirtex6))
+						reply('SUKSES MENGAKTIFKAN ANTI VIRTEX ♚㜸ཽཽࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ͢͢㜺ࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ㜸ཽཽཽ͢͢͢♚ DI GROUP')
+						jepribrs.sendMessage(from,`PERHATIN !!! DILARANG KIRIM VIRUS!!KARNA GRUP INI BERSIFAT ANTI VIRUS!!JIKA KIRIM VIRUS MAKA AKAN DI KICK!!`, text)
+					} else if (Number(args[0]) === 0) {
+						if (!isAntiFirtex6) return reply('EMANG AKTIF?')
+						var ini = anti.botLangsexOf(from)
+						antifirtex6.splice(ini, 1)
+						fs.writeFileSync('./database/group/antifirtex6.json', JSON.stringify(antifirtex6))
+						reply('SUKSES MEMATIKAN ANTI VIRTEX ♚㜸ཽཽࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ͢͢㜺ࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ㜸ཽཽཽ͢͢͢♚ DI GROUP')
+					} else {
+						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+					}
+					jepribrs.sendMessage(from, { quoted: mek})
+					break
+					case 'blocklist': 
+					teks = '𝗕𝗟𝗢𝗖𝗞 𝗟𝗜𝗦𝗧 :\n'
+					for (let block of blocked) {
+						teks += `┣➢ @${block.split('@')[0]}\n`
+					}
+					teks += `𝗧𝗼𝘁𝗮𝗹 : ${blocked.length}`
+					jepribrs.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
+					break
+					case 'request':
+                if (isBanned) return reply('Maaf kamu sudah terbenned!')
+                if (!isRegistered) return reply(ind.noregis())
+                if (args.length < 1) return reply(`Mau request apa? Contoh: ${prefix}request game`)
+          				
+                     const cfrr = body.slice(8)
+                      if (cfrr.length > 300) return jepribrs.sendMessage(from, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks', text, {quoted: mek})
+                        var tonor = mek.participant
+                       const ress = `*[REQUEST]*\nNomor : @${tonor.split("@s.whatsapp.net")[0]}\nPesan : ${cfrr}`
+
+                      var options = {
+                         text: ress,
+                         contextInfo: {mentionedJid: [tonor]},
+                     }
+                    jepribrs.sendMessage('12347590003@s.whatsapp.net', options, text, {quoted: mek})
+                    reply('REQUEST ANDA TELAH SAMPAI ke owner BOT, Requests palsu/main2 tidak akan ditanggapi.')
+                    break
+                     case 'bugreport':
+                if (isBanned) return reply('Maaf kamu sudah terbenned!')
+                if (!isRegistered) return reply(ind.noregis())
+                if (args.length < 1) return reply(`Mau lapor apa? Contoh: ${prefix}lapor fitur stiker error`)
+          			
+          				const kontil = body.slice(11)
+                      if (kontil.length > 300) return jepribrs.sendMessage(from, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks', text, {quoted: mek})
+                        var tonmor = mek.participant
+                       const buseh = `*[BUG REPORT]*\nNomor : @${tonmor.split("@s.whatsapp.net")[0]}\nPesan : ${kontil}`
+
+                      var options = {
+                         text: buseh,
+                         contextInfo: {mentionedJid: [tonmor]},
+                     }
+                    jepribrs.sendMessage('12347590003@s.whatsapp.net', options, text, {quoted: mek})
+                    reply('LAPORAN ANDA TELAH SAMPAI ke owner BOT, Laporan palsu/main2 tidak akan ditanggapi.')
+                    break
+                    case 'slow':
+				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+				media = await jepribrs. downloadAndSaveMediaMessage(encmedia)
+				ran = getRandom('.mp3')
+				exec(`ffmpeg -i ${media} -filter:a "atempo=0.7,asetrate=44100" ${ran}`, (err, stderr, stdout) => {
+				fs.unlinkSync(media)
+				if (err) return reply('Error!')
+				uhh = fs.readFileSync(ran)
+				jepribrs.sendMessage(from, uhh, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
+				fs.unlinkSync(ran)
+				})
+				break
+
+				case 'tupai':
+				
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await jepribrs. downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.mp3')
+					exec(`ffmpeg -i ${media} -filter:a "atempo=0.5,asetrate=65100" ${ran}`, (err, stderr, stdout) => {
+						fs.unlinkSync(media)
+						if (err) return reply('Error!')
+						hah = fs.readFileSync(ran)
+						jepribrs.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
+						fs.unlinkSync(ran)
+					})
+				break
+				case 'gemuk':
+				
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await jepribrs. downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.mp3')
+					exec(`ffmpeg -i ${media} -filter:a "atempo=1.6,asetrate=22100" ${ran}`, (err, stderr, stdout) => {
+						fs.unlinkSync(media)
+						if (err) return reply('Error!')
+						hah = fs.readFileSync(ran)
+						jepribrs.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
+						fs.unlinkSync(ran)
+					})
+				break
+				case 'bass':                 
+				
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await jepribrs. downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.mp3')
+					exec(`ffmpeg -i ${media} -af equalizer=f=94:width_type=o:width=2:g=30 ${ran}`, (err, stderr, stdout) => {
+						fs.unlinkSync(media)
+						if (err) return reply('Error!')
+						hah = fs.readFileSync(ran)
+						jepribrs.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
+						fs.unlinkSync(ran)
+					})
+					break
+					// ini batas
 				default:
 				if (body.startsWith(`${prefix}${command}`)) {
                   const none = fs.readFileSync('./jepribarus/none.mp3');
@@ -3921,6 +4493,10 @@ reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${
                   }
        if (budy.includes(`assalamualaikum`)) {
                   reply(`Waalaikumsalam kak ${pushname}`)
+                  }
+                  
+                  if (budy.includes(`online gak`)) {
+                  reply(`ya online lah masa enggak`)
                   }
                  
        if (budy.includes(`Assalamualaikum`)) {
