@@ -110,6 +110,9 @@ const antifirtex3 = JSON.parse(fs.readFileSync('./database/group/antifirtex3.jso
 const antifirtex4 = JSON.parse(fs.readFileSync('./database/group/antifirtex4.json'))
 const antifirtex5 = JSON.parse(fs.readFileSync('./database/group/antifirtex3.json'))
 const antifirtex6 = JSON.parse(fs.readFileSync('./database/group/antifirtex4.json'))
+const antiyoutube = JSON.parse(fs.readFileSync('./database/group/antiyoutube.json'))
+const antifacebook = JSON.parse(fs.readFileSync('./database/group/antifacebook.json'))
+const antiseleb = JSON.parse(fs.readFileSync('./database/group/antiseleb.json'))
 //function
 const getLevelingXp = (sender) => {
             let position = false
@@ -538,6 +541,9 @@ jepribrs.on('message-new', async (mek) => {
             const isAntiFirtex4= isGroup ? antifirtex4.includes(from) : false
             const isAntiFirtex5= isGroup ? antifirtex5.includes(from) : false
             const isAntiFirtex6= isGroup ? antifirtex6.includes(from) : false
+            const isAntiYoutube= isGroup ? antiyoutube.includes(from) : false
+            const isAntiFacebook= isGroup ? antifacebook.includes(from) : false
+            const isAntiSeleb= isGroup ? antiseleb.includes(from) : false
 			const ucapan = await axios.get('https://xinzbot-api.herokuapp.com/api/ucapan?apikey=XinzBot&timeZone=Asia/Jakarta')
 			const ultah = await axios.get('https://xinzbot-api.herokuapp.com/api/hitungmundur?apikey=XinzBot&tanggal=17&bulan=08')
 
@@ -998,27 +1004,6 @@ jepribrs.on('message-new', async (mek) => {
 		}, 0)
 	}
 	
-	if (messagesC.includes("https://")){
-		if (!isGroup) return
-		if (!isAntilink) return
-		if (isGroupAdmins) return reply('Admin mah bebas yakan syng😗')
-		jepribrs.updatePresence(from, Presence.composing)
-		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
-		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-		reply(`Grup Ini Anti Link Sayang ${sender.split("@")[0]} Kamu Akan di kick sebentar lagi`)
-		setTimeout( () => {
-			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
-		}, 2000)
-		setTimeout( () => {
-			jepribrs.updatePresence(from, Presence.composing)
-			reply("Door Headshot Jep")
-		}, 1000)
-		setTimeout( () => {
-			jepribrs.updatePresence(from, Presence.composing)
-			reply("bismilah")
-		}, 0)
-	}
-	
 	//anti toxic
 	if (bad.includes(messagesC)) {
 		if (!isGroup) return
@@ -1180,6 +1165,91 @@ jepribrs.on('message-new', async (mek) => {
 		}, 0)
 	}
 
+//DETECTOR LINK ~FIXS BUG KANGDEV
+if (messagesC.includes("://youtu.be/")){
+		if (!isGroup) return
+		if (!isAntiYoutube) return
+		if (isGroupAdmins) return reply('anjay admin youtuber')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Anjay Ada Youtuber \n Grup ini anti link youtube beb ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE KANG YOUTUBERツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("://youtube.com/")){
+		if (!isGroup) return
+		if (!isAntiYoutube) return
+		if (isGroupAdmins) return reply('anjay admin youtuber')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Anjay Ada Youtuber \n Grup ini anti link youtube beb ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE KANG YOUTUBERツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("://www.facebook.com/")){
+		if (!isGroup) return
+		if (!isAntiFacebook) return
+		if (isGroupAdmins) return reply('anjay admin Kang Efbi')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Anjay Ada Kang EpBi\n Grup ini anti link FB beb ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE NGABツ")
+		}, 0)
+	}
+	
+	if (messagesC.includes("://instagram.com/")){
+		if (!isGroup) return
+		if (!isAntiSeleb) return
+		if (isGroupAdmins) return reply('anjay admin Seleb')
+		jepribrs.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`Anjay Ada Seleb \n Grup ini anti link instagram beb ${sender.split("@")[0]} Kamu Akan Di Kick Otomatis`)
+		setTimeout( () => {
+			jepribrs.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+		}, 2000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("Door Headshot Jep")
+		}, 1000)
+		setTimeout( () => {
+			jepribrs.updatePresence(from, Presence.composing)
+			reply("GOOD BYE SELEBツ")
+		}, 0)
+	}
+	
              //kolor
 			colors = ['red','white','black','blue','yellow','green']
 			
@@ -1327,7 +1397,7 @@ Kak ${pushname}ツ
 ╠══════════════❍
 ║╔▸ 𝐎𝐓𝐇𝐄𝐑 𝐌𝐄𝐍𝐔ツ
 ║╠❒${prefix}stiker
-║╠❒${prefix}stikerwa
+║╠❒${prefix}stikerwa [kucing]
 ║╠❒${prefix}stikertext
 ║╠❒${prefix}ttp
 ║╠❒${prefix}toimg
@@ -1362,6 +1432,12 @@ Kak ${pushname}ツ
 ║╠❒${prefix}antivirustebel [1/0]
 ║╠❒${prefix}anticollosal [1/0]
 ║╠❒${prefix}antiviruscina [1/0]
+║╚▸
+╠══════════════❍
+║╔▸𝐒𝐎𝐒𝐌𝐄𝐃 𝐃𝐄𝐓𝐄𝐂𝐓𝐎𝐑ツ
+║╠❒${prefix}antiyoutube [1/0]
+║╠❒${prefix}antifacebook [1/0]
+║╠❒${prefix}antiseleb [1/0]
 ║╚▸
 ╠══════════════❍
 ║╔▸𝐒𝐄𝐊𝐎𝐋𝐀𝐇 𝐌𝐄𝐍𝐔ツ
@@ -1431,6 +1507,31 @@ Kak ${pushname}ツ
 ║╠❒${prefix}listvideo
 ║╚▸
 ╠══════════════❍
+║╔▸𝐂𝐄𝐖𝐄𝐊 𝐍𝐘𝐀𝐍𝐘𝐈ツ
+║╠❒${prefix}nyanyi1
+║╠❒${prefix}nyanyi2
+║╠❒${prefix}nyanyi3
+║╠❒${prefix}nyanyi4
+║╠❒${prefix}nyanyi5
+║╠❒${prefix}nyanyi6
+║╠❒${prefix}nyanyi7
+║╠❒${prefix}nyanyi8
+║╠❒${prefix}nyanyi9
+║╠❒${prefix}nyanyi10
+║╠❒${prefix}nyanyi11
+║╠❒${prefix}nyanyi12
+║╠❒${prefix}nyanyi13
+║╚▸
+╠══════════════❍
+║╔▸𝐍𝐄𝐖𝐒 𝐈𝐍𝐅𝐎ツ
+║╠❒${prefix}covid19
+║╠❒${prefix}liputan6
+║╠❒${prefix}kompasnews
+║╠❒${prefix}foxnews
+║╠❒${prefix}detiknews
+║╠❒${prefix}tribun
+║╚▸
+╠══════════════❍
 ║╔▸𝐆𝐀𝐁𝐔𝐓 𝐌𝐄𝐍𝐔ツ
 ║╠❒${prefix}bisakah
 ║╠❒${prefix}kapankah
@@ -1456,12 +1557,21 @@ Kak ${pushname}ツ
 ║╠❒${prefix}ytmp32
 ║╠❒${prefix}playmp3
 ║╠❒${prefix}playmp4
+║╠❒${prefix}joox
 ║╠❒${prefix}igstalk[username]
 ║╠❒${prefix}githubstalk [username]
 ║╠❒${prefix}twiterstalk [username]
 ║╠❒${prefix}igvideo
 ║╠❒${prefix}fbvideo
 ║╠❒${prefix}tiktokvideo
+║╠❒${prefix}playstore
+║╚▸
+╠══════════════❍
+║╔▸𝐒𝐇𝐎𝐑𝐓𝐋𝐈𝐍𝐊ツ
+║╠❒${prefix}bitly
+║╠❒${prefix}shorturl
+║╠❒${prefix}tinyurl
+║╠❒${prefix}cuttly
 ║╚▸
 ╠══════════════❍
 ║╔▸𝐈𝐒𝐋𝐀𝐌𝐈𝐂 𝐌𝐄𝐍𝐔ツ
@@ -3228,6 +3338,23 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
                 })
                 await limitAdd(sender)
                 break
+                case 'stikerwa':
+                if (!isRegistered) return reply(ind.noregis())
+				    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                ranp = getRandom('.gif')
+                rano = getRandom('.webp')
+                anu = await fetchJson(`https://kangdev.herokuapp.com/api/pinterest?query=${body.slice(10)}&apikey=${kangdev}`, { method: 'get' })
+                if (anu.error) return reply(anu.error)
+                exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+                    fs.unlinkSync(ranp)
+                    if (err) return reply(ind.stikga())
+                    buffer = fs.readFileSync(rano)
+                    jepribrs.sendMessage(from, buffer, sticker, { quoted: mek })
+                    fs.unlinkSync(rano)
+                })
+                await limitAdd(sender)
+                break
                 //Kang Wibu
                 case 'waifu':
                 case 'nekonime':
@@ -3384,23 +3511,6 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 				attp2 = await getBuffer(`https://kangdev.herokuapp.com/api/ttp?text=${body.slice(5)}&apikey=${kangdev}`)
 				jepribrs.sendMessage(from, attp2, image, {quoted: mek})
 				break
-				case 'stikerwa':
-				if (!isRegistered) return reply(ind.noregis())
-                if (args.length < 1) return reply(`_Teksnya Mana Sayang_\nContoh ${prefix}stikerwa pentol`)
-                ranp = getRandom('.gif')
-                rano = getRandom('.webp')
-                anu = await fetchJson(`https://kangdev.herokuapp.com/api/stiker/wa?search=${body.slice(9)}&apikey=${kangdev}`, { method: 'get' })
-                reply(ind.wait())
-                if (anu.error) return reply(anu.error)
-                exec(`wget ${anu.result.thumb} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-                    fs.unlinkSync(ranp)
-                    if (err) return reply(ind.stikga())
-                    buffer = fs.readFileSync(rano)
-                    jepribrs.sendMessage(from, buffer, sticker, { quoted: mek })
-                    fs.unlinkSync(rano)
-                })
-                await limitAdd(sender)
-                break
                 case 'mutual':
                 
 				if (!isRegistered) return reply(ind.noregis())
@@ -4101,7 +4211,7 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 					const jep = groupMembers
 					const dev1 = groupMembers
 					const oh1 = jep[Math.floor(Math.random() * jep.length)]
-					teks = `Yang terganteng di grub ini adalah @${oh1.jid.split('@')[0]}`
+					teks = `Yang terjones di grub ini adalah @${oh1.jid.split('@')[0]}`
 					jds.push(oh1.jid)
 					mentions(teks, jds, true)
 					await limitAdd(sender)
@@ -4115,7 +4225,7 @@ https://chat.whatsapp.com/D7uui8L6UKnBJvQhaxhhtL
 					const jep1 = groupMembers
 					const dev2 = groupMembers
 					const oh2 = jep1[Math.floor(Math.random() * jep1.length)]
-					teks = `Yang terganteng di grub ini adalah @${oh2.jid.split('@')[0]}`
+					teks = `Beban Keluarga di grub ini adalah @${oh2.jid.split('@')[0]}`
 					jds.push(oh2.jid)
 					mentions(teks, jds, true)
 					await limitAdd(sender)
@@ -4391,6 +4501,67 @@ reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${
 					}
 					jepribrs.sendMessage(from, { quoted: mek})
 					break
+					//DETECTOR LINK ~FIXS BUG KANGDEV
+					case 'antiyoutube':
+                if (!isGroup) return reply(mess.only.group)
+				if (!isGroupAdmins) return reply(mess.only.admin)
+				if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+				if (args.length < 1) return reply('Ketik 1 untuk mengaktifkan')
+				if (Number(args[0]) === 1) {
+				if (isAntiYoutube) return reply('Anti link Youtube sudah aktif Sebelumnya')
+				antiyoutube.push(from)
+				fs.writeFileSync('./database/group/antiyoutube.json', JSON.stringify(antiyoutube))
+				reply('Sukses mengaktifkan anti Link Youtube Di group ini ✔️')
+				jepribrs.sendMessage(from,`WARNING!!! kepada seluruh member anti link youtube sudah aktif \n apabila anda mengirim link youtube \n anda akan di kick dari group`, text)
+				} else if (Number(args[0]) === 0) {
+				if (!isAntiYoutube) return reply('Mode anti link facebook sudah disable')
+				antiyoutube.splice(from, 1)
+				fs.writeFileSync('./database/group/antiyoutube.json', JSON.stringify(antiyoutube))
+				reply('Sukes menonaktifkan anti link Youtube di group ini ✔️')
+				} else {
+				reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+				}
+				break
+				case 'antiseleb':
+                if (!isGroup) return reply(mess.only.group)
+				if (!isGroupAdmins) return reply(mess.only.admin)
+				if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+				if (args.length < 1) return reply('Ketik 1 untuk mengaktifkan')
+				if (Number(args[0]) === 1) {
+				if (isAntiSeleb) return reply('Anti link ig sudah aktif Sebelumnya')
+				antiseleb.push(from)
+				fs.writeFileSync('./database/group/antiseleb.json', JSON.stringify(antiseleb))
+				reply('Sukses mengaktifkan anti Link Youtube Di group ini ✔️')
+				jepribrs.sendMessage(from,`WARNING!!! kepada seluruh member anti link Instagram sudah aktif \n apabila anda mengirim link Instagram\n anda akan di kick dari group`, text)
+				} else if (Number(args[0]) === 0) {
+				if (!isAntiSeleb) return reply('Mode anti link Instagram sudah disable')
+				antiseleb.splice(from, 1)
+				fs.writeFileSync('./database/group/antiseleb.json', JSON.stringify(antiseleb))
+				reply('Sukes menonaktifkan anti link Instagram di group ini ✔️')
+				} else {
+				reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+				}
+				break
+				case 'antifacebook':
+                if (!isGroup) return reply(mess.only.group)
+				if (!isGroupAdmins) return reply(mess.only.admin)
+				if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+				if (args.length < 1) return reply('Ketik 1 untuk mengaktifkan')
+				if (Number(args[0]) === 1) {
+				if (isAntiFacebook) return reply('Anti link facebook sudah aktif Sebelumnya')
+				antifacebook.push(from)
+				fs.writeFileSync('./database/group/antifacebook.json', JSON.stringify(antifacebook))
+				reply('Sukses mengaktifkan anti Link Youtube Di group ini ✔️')
+				jepribrs.sendMessage(from,`WARNING!!! kepada seluruh member anti link facebook sudah aktif \n apabila anda mengirim link fb \n anda akan di kick dari group`, text)
+				} else if (Number(args[0]) === 0) {
+				if (!isAntiFacebook) return reply('Mode anti link group sudah disable')
+				antifacebook.splice(from, 1)
+				fs.writeFileSync('./database/group/antifacebook.json', JSON.stringify(antifacebook))
+				reply('Sukes menonaktifkan anti link fb di group ini ✔️')
+				} else {
+				reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+				}
+				break
 					case 'blocklist': 
 					teks = '𝗕𝗟𝗢𝗖𝗞 𝗟𝗜𝗦𝗧 :\n'
 					for (let block of blocked) {
@@ -4486,6 +4657,194 @@ reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${
 					})
 					break
 					// ini batas
+					case 'playstore':
+                  if (!isRegistered) return reply(ind.noregis())
+		if (isBanned) return reply(ind.baned())
+                if (isLimit(sender)) return reply(limitend(pushname)) 
+                if (args.length < 1) return reply(`Contoh ${prefix}playstore facebook`)
+                ps = `${body.slice(11)}`
+                  anu = await fetchJson(`https://kangdev.herokuapp.com/api/playstore?query=${ps}&apikey=${kangdev}`, {method: 'get'})
+                  store = '======================\n'
+                  for (let ply of anu.result){
+                  store += `• *Nama Apk:* ${ply.title}\n• *ID:* ${ply.app_id}\n• *Developer:* ${ply.developer}\n• *Link Apk:* ${ply.url}\n=====================\n`
+                  }
+                  reply(store.trim())
+                  break
+                  case 'bitly':				
+                 if (!isRegistered) return reply( ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (args.length < 1) return reply(`Contoh ${prefix}bitly https://youtu.be/5on1zH_p2y0`)
+				jepribrs.updatePresence(from, Presence.composing) 
+				data = await fetchJson(`https://kangdev.herokuapp.com/api/bitly?url=${args[0]}&apikey=${kangdev}`)
+				hasil = `Link Ori : ${args[0]}\n\Shortlink: ${data.url}`
+				reply(hasil)
+				break
+				case 'tinyurl':				
+                 if (!isRegistered) return reply( ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (args.length < 1) return reply(`Contoh ${prefix}tinyurl https://youtu.be/5on1zH_p2y0`)
+				jepribrs.updatePresence(from, Presence.composing) 
+				data = await fetchJson(`https://kangdev.herokuapp.com/api/tinyurl?url=${args[0]}&apikey=${kangdev}`)
+				hasil = `Link Ori : ${args[0]}\n\Shortlink: ${data.url}`
+				reply(hasil)
+				break
+				case 'shorturl':				
+                 if (!isRegistered) return reply( ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (args.length < 1) return reply(`Contoh ${prefix}shorturl https://youtu.be/5on1zH_p2y0`)
+				jepribrs.updatePresence(from, Presence.composing) 
+				data = await fetchJson(`https://kangdev.herokuapp.com/api/shorturl?url=${args[0]}&apikey=${kangdev}`)
+				hasil = `Link Ori : ${args[0]}\n\Shortlink: ${data.url}`
+				reply(hasil)
+				break
+				case 'cuttly':				
+                 if (!isRegistered) return reply( ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (args.length < 1) return reply(`Contoh ${prefix}cuttly https://youtu.be/5on1zH_p2y0`)
+				jepribrs.updatePresence(from, Presence.composing) 
+				data = await fetchJson(`https://kangdev.herokuapp.com/api/cuttly?url=${args[0]}&apikey=${kangdev}`)
+				hasil = `Link Ori : ${args[0]}\n\Shortlink: ${data.url}`
+				reply(hasil)
+				break
+				//SOUND CEWEK NYANYI
+				case 'nyanyi1':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+satu = fs.readFileSync('./mp3/nyanyi1.mp3');
+jepribrs.sendMessage(from, satu, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi2':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+dua = fs.readFileSync('./mp3/nyanyi2.mp3');
+jepribrs.sendMessage(from, dua, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi3':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+tiga = fs.readFileSync('./mp3/nyanyi3.mp3');
+jepribrs.sendMessage(from, tiga, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi4':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+empat = fs.readFileSync('./mp3/nyanyi4.mp3');
+jepribrs.sendMessage(from, empat, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi5':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+lima = fs.readFileSync('./mp3/nyanyi5.mp3');
+jepribrs.sendMessage(from, lima, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi6':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+enam = fs.readFileSync('./mp3/nyanyi6.mp3');
+jepribrs.sendMessage(from, enam, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi7':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+tujuh = fs.readFileSync('./mp3/nyanyi7.mp3');
+jepribrs.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi8':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+lapan = fs.readFileSync('./mp3/nyanyi8.mp3');
+jepribrs.sendMessage(from, lapan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi9':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+bilan = fs.readFileSync('./mp3/nyanyi9.mp3');
+jepribrs.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi10':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+puluh = fs.readFileSync('./mp3/nyanyi10.mp3');
+jepribrs.sendMessage(from, puluh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi11':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+belas = fs.readFileSync('./mp3/nyanyi11.mp3');
+jepribrs.sendMessage(from, belas, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi12':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+dev = fs.readFileSync('./mp3/nyanyi12.mp3');
+jepribrs.sendMessage(from, dev, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+case 'nyanyi13':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+kang = fs.readFileSync('./mp3/nyanyi13.mp3');
+jepribrs.sendMessage(from, kang, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+break
+//ini batas ngab ~news info
+                   case 'liputan6':
+			        if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`https://kangdev.herokuapp.com/api/liputan6?apikey=${kangdev}`, {method: 'get'})
+					capt = `[KANGDEV BOT] \n\n Title: ${anu.result.title}\n\n url: ${anu.result.url}\n\n deskripsi: ${anu.result.ket}\n\n category: ${anu.result.category}\n\n Date: ${anu.result.time}`
+					jepribrs.sendMessage(from, capt, text, { quoted: mek })
+					break
+					case 'kompasnews':
+			        if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`https://kangdev.herokuapp.com/api/news/kompas?apikey=${kangdev}`, {method: 'get'})
+					capt = `[KANGDEV BOT] \n\n Title: ${anu.result.title}\n\n url: ${anu.result.url}\n\n Date: ${anu.result.time}`
+					jepribrs.sendMessage(from, capt, text, { quoted: mek })
+					break
+					case 'detiknews':
+			        if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`https://kangdev.herokuapp.com/api/news/detik?apikey=${kangdev}`, {method: 'get'})
+					capt = `[KANGDEV BOT] \n\n Title: ${anu.result.title}\n\n url: ${anu.result.link_url}\n\n Date: ${anu.result.Time}`
+					jepribrs.sendMessage(from, capt, text, { quoted: mek })
+					break
+					case 'foxnews':
+			        if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`https://kangdev.herokuapp.com/api/foxnews?apikey=${kangdev}`, {method: 'get'})
+					capt = `[KANGDEV BOT] \n\n Title: ${anu.result.title}\n\n url: ${anu.result.url}\n\n Date: ${anu.result.time}`
+					jepribrs.sendMessage(from, capt, text, { quoted: mek })
+					break
+					case 'tribun':
+			        if (!isRegistered) return reply( ind.noregis())
+                    if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`https://kangdev.herokuapp.com/api/tribunews?apikey=${kangdev}`, {method: 'get'})
+					capt = `[KANGDEV BOT] \n\n Title: ${anu.result.title}\n\n url: ${anu.result.url}\n\n Date: ${anu.result.time}\n Deskripsi: ${anu.result.ket}`
+					jepribrs.sendMessage(from, capt, text, { quoted: mek })
+					break
+                    case 'joox':
+				if (!isRegistered) return reply( ind.noregis())
+                if (isBanned) return reply('Maaf kamu sudah terbenned!')
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				jepribrs.updatePresence(from, Presence.recording) 
+				if (args.length < 1) return reply('Judulnya apa beb?')
+				reply('[🚴] sabar sayang sedang proses')
+				query = args.join(" ")
+				anu = await fetchJson(`https://kangdev.herokuapp.com/api/joox?search=${query}&apikey=${kangdev}`, {method: 'get'})
+				ini_info = `Judul: ${anu.title}\n\n Artis: ${anu.artist}\n\n TUNGGU SEBENTAR \n LAGI DIKIRIM \n JANGAN DI SPAM YA BEB`
+				buffer = await getBuffer(anu.thumb)
+				lagu = await getBuffer(anu.url_mp3)
+				jepribrs.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+				jepribrs.sendMessage(from, buffer, image, {quoted: mek, caption: ini_info})
+			break 
 				default:
 				if (body.startsWith(`${prefix}${command}`)) {
                   const none = fs.readFileSync('./jepribarus/none.mp3');
@@ -4533,16 +4892,6 @@ reply(`*Menuju 17 Agustus:*\n\n ${dayss} Hari ${hourss} Jam ${minutess} Menit ${
                   
                   if (budy.includes(`toxic`)) {
                 const bot = fs.readFileSync('./jepribarus/toxic.mp3');
-                jepribrs.sendMessage(from, bot, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-                  }
-                  
-                  if (budy.includes(`nyanyi`)) {
-                const bot = fs.readFileSync('./jepribarus/Aisyah.mp3');
-                jepribrs.sendMessage(from, bot, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-                  }
-                  
-                  if (budy.includes(`Nyanyi`)) {
-                const bot = fs.readFileSync('./jepribarus/Aisyah.mp3');
                 jepribrs.sendMessage(from, bot, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
                   
