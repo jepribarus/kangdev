@@ -80,7 +80,7 @@ namaowner = '𝐉𝐄𝐏𝐑𝐈 𝐁𝐀𝐑𝐔𝐒'
 namabot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='apikey lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='pangkal' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 xteam ='apikey lu' //beli langsung di web nya
 
 
@@ -1345,7 +1345,7 @@ if (messagesC.includes("://youtu.be/")){
                  if (!isRegistered) return reply( ind.noregis())
                     if (isBanned) return reply('Maaf kamu sudah terbenned!')
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                    wew = fs.readFileSync(`./jepribarus/logo.jpg`)
+                    wew = fs.readFileSync(`./jepribarus/apa.jpg`)
                     uptime = process.uptime()
 		            myMonths = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
                     myDays = ['Minggu','Senin','Selasa','Rabu','Kamis','Jum at','Sabtu'];
