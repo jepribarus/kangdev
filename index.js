@@ -80,7 +80,7 @@ namaowner = '𝐉𝐄𝐏𝐑𝐈 𝐁𝐀𝐑𝐔𝐒'
 namabot = 'KANGDEV BOT'
 
 //apikey Settings
-kangdev ='apikey lu' //beli apikey? chat me 085767354326 =cuma 10k/bulan
+kangdev ='pangkal' //beli apikey? chat me 085767354326 =cuma 10k/bulan
 xteam ='apikey lu' //beli langsung di web nya
 
 
